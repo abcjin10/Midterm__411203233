@@ -131,6 +131,16 @@ def overview_student():
 # new botton Overview
 botton_overview = tk.Button(root, text='Overview', command=overview_student)
 botton_overview.pack(pady=25)
+def delete_student():
+    student_id = entry_id.get()
+    cursor.execute('SELECT * from DB_student WHERE db_student_id=?', (student_id,))
+    delete = cursor.fetchall()
+    cursor.execute('DELETE from DB_student WHERE db_student_id=?', (student_id,))
+    print ('Folllowing row is delete:', delete)
+    conn.commit()
+
+botton_delete = tk.Button(root, text='Delete', command=delete_student)
+botton_delete.pack(pady=25
 
 >>>>>>> bf084b3e46141fbd7ff71f1c2c3f112a0df392f4
 root.mainloop() #must be put to the end of programming code
